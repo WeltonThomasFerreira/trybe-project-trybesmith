@@ -5,9 +5,9 @@ interface IErr {
   msg: string;
 }
 
-const catchError = async (err: IErr, _req: Request, res: Response) =>
+const errorHandler = async (err: IErr, _req: Request, res: Response) =>
   res
     .status(err.code || 500)
     .json({ message: err.msg || 'Internal Server Error' });
 
-export default catchError;
+export default errorHandler;
