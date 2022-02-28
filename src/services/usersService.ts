@@ -74,7 +74,8 @@ const validatePassword = async (password: string): Promise<void> => {
 
 const createNewUser = async (user: IInputUser): Promise<string> => {
   const { id, username } = await UsersModel.createNewUser(user);
-  return jwt.sign({ data: { id, username } }, process.env.JWT_SECRET as string);
+  const secret: jwt.Secret = process.env.SECRET || 'key';
+  return jwt.sign({ data: { id, username } }, secret);
 };
 
 export default {
