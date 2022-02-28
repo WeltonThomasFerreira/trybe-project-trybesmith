@@ -49,7 +49,9 @@ const validateClasse = async (classe: string): Promise<void> => {
 const validateLevel = async (level: number): Promise<void> => {
   const schema = Joi.object({
     isRequired: Joi.required().error(LEVEL_IS_REQUIRED),
-    isNumber: Joi.number().prefs({ convert: false }).error(LEVEL_MUST_BE_NUMBER),
+    isNumber: Joi.number()
+      .prefs({ convert: false })
+      .error(LEVEL_MUST_BE_NUMBER),
     isGreater: Joi.number().greater(0).error(LEVEL_MUST_BE_GREATER),
   });
   await schema.validateAsync({
@@ -71,6 +73,11 @@ const validatePassword = async (password: string): Promise<void> => {
     isLonger: password,
   });
 };
+
+// jwt sign não estava passando no gh,
+// como solução usei a variável secret do Rafael Veiga,
+// que atribuí o valor 'key' caso a variável de ambiente seja undefined
+// src: https://github.com/tryber/sd-014-b-project-trybesmith/pull/50/files
 
 const createNewUser = async (user: IInputUser): Promise<string> => {
   const { id, username } = await UsersModel.createNewUser(user);
