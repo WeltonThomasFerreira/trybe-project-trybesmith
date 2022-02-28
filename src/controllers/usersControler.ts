@@ -17,10 +17,9 @@ export const validateNewUser = async (
     next();
   } catch (error) {
     if (error instanceof HttpError) {
-      return res
-        .status(error.code || 500)
-        .json({ error: error.message || 'Internal Server Error' });
+      return res.status(error.code).json({ error: error.message });
     }
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
@@ -36,9 +35,8 @@ export const createNewUser = async (req: Request, res: Response) => {
     return res.status(201).json({ token });
   } catch (error) {
     if (error instanceof HttpError) {
-      return res
-        .status(error.code || 500)
-        .json({ error: error.message || 'Internal Server Error' });
+      return res.status(error.code).json({ error: error.message });
     }
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 };
