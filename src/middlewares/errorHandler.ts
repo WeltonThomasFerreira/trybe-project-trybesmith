@@ -1,13 +1,11 @@
 import { Request, Response } from 'express';
+import { HttpError } from '../errors/userErrors';
 
-interface IErr {
-  code: number;
-  msg: string;
-}
-
-const errorHandler = async (err: IErr, _req: Request, res: Response) =>
-  res
+const errorHandler = async (err: HttpError, _req: Request, res: Response) => {
+  console.log(`Log de erro: ${err.message}`);
+  return res
     .status(err.code || 500)
-    .json({ message: err.msg || 'Internal Server Error' });
+    .json({ error: err.message || 'Internal Server Error' });
+};
 
 export default errorHandler;
