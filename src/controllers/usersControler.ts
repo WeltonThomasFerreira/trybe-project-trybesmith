@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import UsersService from '../services/usersService';
-import { HttpError } from '../errors/userErrors';
+import HttpError from '../errors/httpError';
 
 export const validateNewUser = async (
   req: Request,

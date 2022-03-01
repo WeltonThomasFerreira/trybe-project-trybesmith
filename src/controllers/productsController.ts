@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import ProductsService from '../services/productsService';
-import { HttpError } from '../errors/productsErrors';
+import HttpError from '../errors/httpError';
 
 export const validateNewProduct = async (
   req: Request,

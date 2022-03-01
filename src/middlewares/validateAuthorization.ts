@@ -1,34 +1,31 @@
 import dotenv from 'dotenv';
 import Joi from 'joi';
-import jwt from 'jsonwebtoken';
-import { CustomError } from 'ts-custom-error';
+import jwt, { JsonWebTokenError } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
+import HttpError from '../errors/httpError';
 
 dotenv.config();
 
-export class HttpError extends CustomError {
-  public constructor(public code: number, message?: string) {
-    super(message);
-  }
-}
-
 export const TOKEN_NOT_FOUND = new HttpError(401, 'Token not found');
-export const INVALID_TOKEN = new HttpError(401, 'Expired or invalid token');
+export const INVALID_TOKEN = new HttpError(401, 'Invalid token');
 
-const isInvalidToken = (error: Error | unknown) => {
-  if (error instanceof HttpError) {
+const isInvalidToken = (error: HttpError | unknown) => {
+  if (error instanceof JsonWebTokenError) {
     const invalidToken = /^(TokenExpiredError|JsonWebTokenError)$/;
     if (invalidToken.test(error.name)) throw INVALID_TOKEN;
     throw error;
   }
 };
 
-const validate = async (authorization: string) => {
+const isRequired = async (authorization: string | undefined) => {
+  const schema = Joi.string().required().error(TOKEN_NOT_FOUND);
+  await schema.validateAsync(authorization);
+};
+
+const isValid = async (authorization: string | undefined) => {
   try {
-    const schema = Joi.string().required().error(TOKEN_NOT_FOUND);
-    await schema.validateAsync(authorization);
     const secret: jwt.Secret = process.env.SECRET || 'key';
-    jwt.verify(authorization, secret);
+    jwt.verify(authorization as string, secret);
   } catch (error) {
     isInvalidToken(error);
   }
@@ -41,7 +38,8 @@ const validateAuthorization = async (
 ) => {
   try {
     const { authorization } = req.headers;
-    await validate(authorization as string);
+    await isRequired(authorization);
+    await isValid(authorization);
     next();
   } catch (error) {
     if (error instanceof HttpError) {

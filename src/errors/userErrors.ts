@@ -1,10 +1,4 @@
-import { CustomError } from 'ts-custom-error';
-
-export class HttpError extends CustomError {
-  public constructor(public code: number, message?: string) {
-    super(message);
-  }
-}
+import HttpError from './httpError';
 
 export const USERNAME_IS_REQUIRED = new HttpError(400, 'Username is required');
 

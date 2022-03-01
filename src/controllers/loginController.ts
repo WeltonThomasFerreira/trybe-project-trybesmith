@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import LoginService from '../services/loginService';
-import { HttpError } from '../errors/loginErrors';
+import HttpError from '../errors/httpError';
 
 export const validateLogin = async (
   req: Request,
