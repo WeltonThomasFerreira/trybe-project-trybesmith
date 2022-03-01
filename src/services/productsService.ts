@@ -38,4 +38,6 @@ const validateAmount = async (amount: string): Promise<void> => {
 
 const createNewProduct = async (product: IInputProduct) => ProductsModel.createNewProduct(product);
 
-export default { validateName, validateAmount, createNewProduct };
+const getAllProducts = async () => ProductsModel.getAllProducts();
+
+export default { validateName, validateAmount, createNewProduct, getAllProducts };
