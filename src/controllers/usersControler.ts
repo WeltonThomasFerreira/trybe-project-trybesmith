@@ -1,4 +1,3 @@
-// import rescue from 'express-rescue';
 import { Request, Response, NextFunction } from 'express';
 import UsersService from '../services/usersService';
 import { HttpError } from '../errors/userErrors';

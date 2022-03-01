@@ -1,3 +1,4 @@
+// Não está funcionando, rescue em controller não pegam o erro
 import { Request, Response } from 'express';
 import { HttpError } from '../errors/userErrors';
 

@@ -1,6 +1,6 @@
 import { OkPacket } from 'mysql2';
 import connection from './connection';
-import { IInputUser, IUser } from '../interfaces/userInterface';
+import { IInputUser, IUser } from '../interfaces/users/userInterface';
 
 const createNewUser = async (user: IInputUser): Promise<IUser> => {
   const sql = `INSERT INTO Trybesmith.Users (username, classe, level, password) 

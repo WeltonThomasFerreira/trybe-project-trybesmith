@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import Joi from 'joi';
 import UsersModel from '../models/usersModel';
-import { IInputUser } from '../interfaces/userInterface';
+import { IInputUser } from '../interfaces/users/userInterface';
 import {
   USERNAME_IS_REQUIRED,
   USERNAME_MUST_BE_STRING,
