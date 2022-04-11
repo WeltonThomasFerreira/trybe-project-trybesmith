@@ -3,9 +3,9 @@ CRUD (Create, Read, Update e Delete) de itens medievais, no formato de uma API, 
 
 ## Linguagens
 <div style="display: inline_block">
-  <img src="https://img.shields.io/badge/typescript%2097.4%25-3178C6?style=for-the-badge&logo=typescript&logoColor=fff&logoWidth=20"/>
-  <img src="https://img.shields.io/badge/dockerfile%201.3%25-2496ED?style=for-the-badge&logo=docker&logoColor=fff&logoWidth=20"/>
-  <img src="https://img.shields.io/badge/shell%200.4%25-4EAA25?style=for-the-badge&logo=gnubash&logoColor=fff&logoWidth=20"/>
+  <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=fff&logoWidth=20"/>
+  <img src="https://img.shields.io/badge/dockerfile-2496ED?style=for-the-badge&logo=docker&logoColor=fff&logoWidth=20"/>
+  <img src="https://img.shields.io/badge/shell-4EAA25?style=for-the-badge&logo=gnubash&logoColor=fff&logoWidth=20"/>
 </div>
 
 ## Autores
