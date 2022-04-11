@@ -9,9 +9,7 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "compose:up": "docker-compose -p 'trybesmith' up -d --force-recreate --build",
-    "compose:down": "docker-compose -p 'trybesmith' down --remove-orphans",
-    "docker:mysql": "docker exec -it mysqldb mysql",
-    "docker:logs": "docker logs --tail 1000 -f backend"
+    "compose:down": "docker-compose -p 'trybesmith' down --remove-orphans"
   },
   "keywords": [],
   "author": "",
