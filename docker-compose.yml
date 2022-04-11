@@ -1,1 +1,31 @@
-# todo
+version: '3.9'
+services: 
+  mysqldb:
+    image: mysql:5.7
+    container_name: db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+    volumes:
+      - db:/var/lib/mysql
+      - ./Trybesmith.sql:/docker-entrypoint-initdb.d/Trybesmith.sql 
+  app:
+    depends_on:
+      - mysqldb
+    build: .
+    image: trybesmith_backend:latest
+    container_name: app
+    restart: unless-stopped
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER=$MYSQLDB_USER
+      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - DB_NAME=$MYSQLDB_DATABASE
+      - DB_PORT=$MYSQLDB_DOCKER_PORT
+volumes:
+  db:
