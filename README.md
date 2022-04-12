@@ -9,9 +9,9 @@ CRUD (Create, Read, Update e Delete) de itens medievais, no formato de uma API, 
 </div>
 
 ## Autores
-- **Thomas Ferreira** (76%, 22 commits)
-- **trybe-tech-ops** (17%, 5 commits)
-- **rafaelmaltez** (7%, 2 commits)
+- **Thomas Ferreira** (81%, 30 commits)
+- **trybe-tech-ops** (14%, 5 commits)
+- **rafaelmaltez** (5%, 2 commits)
 
 ## Habilidades
 - Declarar variáveis e funções com tipagens;
