@@ -23,12 +23,12 @@ CRUD (Create, Read, Update e Delete) de itens medievais, no formato de uma API, 
 Esse projeto utiliza variáveis de ambiente no formato de arquivo. Renomeie `.env.example` para `.env` e altere os valores se preferir!
 
 ### Via docker + node:
-```
+```sh
 npm run compose:up
 ```
 
 ### Via docker:
-```
+```sh
 sudo sh ./scripts/compose-up.sh
 ```
 ## Exemplo de uso
